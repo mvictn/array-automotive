@@ -12,15 +12,29 @@ class Car extends VehicleModule{
         this.fuel = 10;
         this.scheduleService = false;
     }
-loadPassanger(){
+loadPassenger(num) {
+     if (this.passenger < this.maxPassengers) {
+         if ((num + this.passenger) <= this.maxPassengers) {
+             this.passenger = num;
+            return this.passenger;               
+         } else {
+             console.log(this.model + " " + this.make + " not have enough space to take all passengers.");
 
+         }
+    } else {
+         console.log(this.model + " " + this.make + " is full");
+     }
 }
 start(){
     if(this.fuel>0)
     console.log('car has started');
-    return this.started = true;
+    return this.started == true;
 }
 scheduleService(){
+    if(this.mileage > 3000){
+        console.log('time for maintenance')
+        return this.scheduleService == true
+    }
    
 }
 }
@@ -28,3 +42,7 @@ scheduleService(){
 //this shows how to call from this module...
 let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
 console.log(v.make)
+
+this.start()
+this.loadPassenger(5)
+this.scheduleService()
